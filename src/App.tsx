@@ -1,41 +1,19 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Nav from "./components/Nav/Nav";
-import Tabs from "./components/Tabs/Tabs";
-import Container from "./ui/layout/Container";
-import H1 from "./ui/typography/H1";
-import P from "./ui/typography/P";
-import TextButton from "./ui/buttons/textButton";
-import A from "./ui/typography/A";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
+import NoPage from "./pages/NoPage";
+import Game from "./pages/Game";
 
-function App() {
-  const [currentTab, setCurrentTab] = useState<0 | 1 | 2>(0);
-  const navigate = useNavigate();
-  const handleNavigate = () => {
-    navigate("/game", {
-      state: { difficulty: currentTab },
-    });
-  };
+export default function App() {
   return (
-    <section>
-      <Nav />
-      <Container className="flex flex-col items-center justify-between gap-12 mt-16">
-        <H1>
-          Welcome To <span className="text-pink-500">Words</span> Game
-        </H1>
-        <div className="flex flex-col gap-3">
-          <P>Select Difficulty</P>
-          <Tabs
-            tabs={["Easy", "Medium", "Hard"]}
-            currentTab={currentTab}
-            setCurrentTab={setCurrentTab}
-          />
-        </div>
-        <TextButton onClick={handleNavigate}>Start!</TextButton>
-        <A>Don't know how to play ?</A>
-      </Container>
-    </section>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="game" element={<Game />} />
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;

@@ -4,24 +4,34 @@ import Logo from "../Logo/Logo";
 import DarkModeButton from "../DarkMode/DarkMode";
 import Container from "../../ui/layout/Container";
 import { iconStroke, iconsSize } from "../../shared/constants";
+import Info from "../Info/Info";
+import { useState } from "react";
 
 function Nav() {
+  const [showInfo, setShowInfo] = useState(false);
   return (
     <nav className="w-screen">
       <Container className=" flex items-center justify-between">
         <Logo height={64} />
         <div className="flex items-center justify-center gap-3">
-          <IconButton title="how to play?">
+          <IconButton
+            title="how to play?"
+            onClick={() => setShowInfo(!showInfo)}
+          >
             <IconInfoSmall size={iconsSize + 20} stroke={iconStroke - 0.5} />
           </IconButton>
-          <IconButton title="Github repo">
-            <IconBrandGithub size={iconsSize} stroke={iconStroke} />
-          </IconButton>
+          <a href="https://github.com/qhamid/words" target="_blank">
+            <IconButton title="Github repo">
+              <IconBrandGithub size={iconsSize} stroke={iconStroke} />
+            </IconButton>
+          </a>
+
           <IconButton title="toggle dark mode">
             <DarkModeButton />
           </IconButton>
         </div>
       </Container>
+      {showInfo && <Info setShowInfo={setShowInfo} />}
     </nav>
   );
 }

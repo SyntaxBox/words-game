@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Nav from "./components/Nav/Nav";
 import Tabs from "./components/Tabs/Tabs";
 import Container from "./ui/layout/Container";
@@ -8,7 +9,13 @@ import TextButton from "./ui/buttons/textButton";
 import A from "./ui/typography/A";
 
 function App() {
-  const [currentTab, setCurrentTab] = useState(0);
+  const [currentTab, setCurrentTab] = useState<0 | 1 | 2>(0);
+  const navigate = useNavigate();
+  const handleNavigate = () => {
+    navigate("/game", {
+      state: { difficulty: currentTab },
+    });
+  };
   return (
     <section>
       <Nav />
@@ -24,7 +31,7 @@ function App() {
             setCurrentTab={setCurrentTab}
           />
         </div>
-        <TextButton>Start!</TextButton>
+        <TextButton onClick={handleNavigate}>Start!</TextButton>
         <A>Don't know how to play ?</A>
       </Container>
     </section>

@@ -1,5 +1,12 @@
+import Logo from "../Logo/Logo";
+
 function Nav() {
-  return <div>Nav</div>;
+  return (
+    <nav>
+      <Logo height={80} />
+      <div></div>
+    </nav>
+  );
 }
 
 export default Nav;

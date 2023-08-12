@@ -14,7 +14,13 @@ function DarkModeButton() {
   };
 
   return (
-    <DarkModeSwitch checked={isDarkMode} onChange={toggleDarkMode} size={22} />
+    <DarkModeSwitch
+      moonColor="#ec4899"
+      sunColor="#ec4899"
+      checked={isDarkMode}
+      onChange={toggleDarkMode}
+      size={22}
+    />
   );
 }
 

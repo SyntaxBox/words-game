@@ -3,7 +3,12 @@ function Logo({ height }: { height: number }) {
     height: `${height}px`,
     width: `${height}px`,
   };
-  return <img style={style} src="./logo.svg" alt="logo image" />;
+  return (
+    <div className="flex items-center justify-between">
+      <img style={style} src="./logo.svg" alt="logo image" />
+      <p className="text-3xl font-bold text-pink-500">ords</p>
+    </div>
+  );
 }
 
 export default Logo;

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 import { useDarkMode } from "../../shared";
+import { iconsSize } from "../../shared/constants";
 
 function DarkModeButton() {
   const [colorTheme, setTheme] = useDarkMode();
@@ -19,7 +20,7 @@ function DarkModeButton() {
       sunColor="#ec4899"
       checked={isDarkMode}
       onChange={toggleDarkMode}
-      size={22}
+      size={iconsSize}
     />
   );
 }

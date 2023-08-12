@@ -5,7 +5,7 @@ function Letter({
   onChange,
 }: {
   focus?: boolean;
-  onChange: (value: string) => unknown;
+  onChange: (value: string) => void;
 }) {
   const ref = useRef<HTMLInputElement>(null);
   const [value, setValue] = useState("");

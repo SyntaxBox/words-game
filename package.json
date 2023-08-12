@@ -12,7 +12,8 @@
   "dependencies": {
     "@tabler/icons-react": "^2.30.0",
     "react": "^17.0.0 || ^18.0.0",
-    "react-dom": "^17.0.0 || ^18.0.0"
+    "react-dom": "^17.0.0 || ^18.0.0",
+    "react-toggle-dark-mode": "^1.1.1"
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { StringUtils } from "../../shared";
 
 function Letter({
   focus,
@@ -9,6 +10,7 @@ function Letter({
 }) {
   const ref = useRef<HTMLInputElement>(null);
   const [value, setValue] = useState("");
+  const [deleteKey, setDeleteKey] = useState(false);
   if (ref && ref.current) {
     if (focus) ref.current.focus();
     else ref.current.blur();
@@ -17,7 +19,7 @@ function Letter({
 
   useEffect(() => {
     if (ref && ref.current) if (focus) ref.current.focus();
-  }, [ref]);
+  }, [ref, focus]);
 
   const handleFocus = () => {
     if (ref && ref.current) {
@@ -33,9 +35,32 @@ function Letter({
     }
   };
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.toUpperCase();
+    if (StringUtils.isAlphabetLetter(value)) setValue(value);
+  };
+
+  window.addEventListener(
+    "keydown",
+    (e) => {
+      if (focus) {
+        if (!deleteKey && focus) if (e.key === "Backspace") setDeleteKey(true);
+      }
+    },
+    true
+  );
   useEffect(() => {
-    onChange(value);
+    if (value) onChange(value);
   }, [value]);
+
+  useEffect(() => {
+    focus && onChange("delete");
+  }, [deleteKey]);
+
+  useEffect(() => {
+    focus && setValue("");
+  }, [focus]);
+
   return (
     <input
       ref={ref}
@@ -43,7 +68,7 @@ function Letter({
       onBlur={handleBlur}
       className="inter w-[48px] text-center inline-flex justify-center items-center gap-2 rounded-md bg-pink-100 dark:hover:bg-[#ec489a68] dark:bg-[#ec489a3c] border border-transparent text-pink-500 dark:text-pink-400  hover:bg-pink-200 text-xl focus:outline-none focus:ring-2 ring-offset-white focus:ring-pink-500 focus:ring-offset-2 transition-all dark:focus:ring-offset-slate-900 aspect-square"
       value={value}
-      onChange={(e) => setValue(e.target.value.toUpperCase())}
+      onChange={handleChange}
     />
   );
 }

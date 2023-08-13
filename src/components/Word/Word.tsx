@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Letter from "../Letter/Letter";
-import { ArrayUtils } from "../../shared";
+import { ArrayUtils, StringUtils } from "../../shared";
 
 function Word({
   word,
@@ -9,16 +9,15 @@ function Word({
 }: {
   word: string;
   focus?: boolean;
-  onChange: (res: boolean) => any;
+  onChange: (res: string) => any;
 }) {
   const columns = ArrayUtils.createArray(word.length);
   const [composedWord, setComposedWord] = useState("");
   const [currentCol, setCurrentCol] = useState(0);
   const handleLetterChange = (l: string) => {
-    console.log("called");
     if (l === "delete") {
-      setCurrentCol((p) => p - 1);
-      setComposedWord((w) => w.slice(0, -1));
+      currentCol > 0 && setCurrentCol((p) => p - 1);
+      composedWord.length && setComposedWord((w) => w.slice(0, -1));
     } else {
       setCurrentCol((p) => p + 1);
       setComposedWord((w) => w + l);
@@ -27,9 +26,15 @@ function Word({
 
   useEffect(() => {
     if (composedWord.length === columns.length) {
-      onChange(true);
+      handleCompare();
     }
   }, [composedWord]);
+
+  const handleCompare = () => {
+    const diff = StringUtils.compareStrings(word, composedWord.toLowerCase());
+    console.log(word);
+    console.log(diff);
+  };
 
   return (
     <div className="flex items-center justify-center gap-3">

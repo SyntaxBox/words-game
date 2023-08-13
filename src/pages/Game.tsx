@@ -12,6 +12,7 @@ function Game() {
 
   const [score, setScore] = useState(0);
   const [word, setWord] = useState("");
+  const [words, setWords] = useState<string[]>([]);
 
   const difficulty = location.state?.difficulty;
   const wordLength = location.state?.wordLength;
@@ -21,11 +22,14 @@ function Game() {
     if (!Number.isInteger(wordLength)) navigate("/");
   }, []);
 
-  const words = StringUtils.splitChunks(wordsArr[wordLength], wordLength + 3);
   useEffect(() => {
-    setWord(ArrayUtils.randomSelect(words));
-  }, []);
-
+    if (wordLength)
+      setWords(StringUtils.splitChunks(wordsArr[wordLength], wordLength + 3));
+  }, [wordLength]);
+  useEffect(() => {
+    if (words) setWord(ArrayUtils.randomSelect(words));
+  }, [words]);
+  if (!word) return null;
   return (
     <Container className="flex gap-4">
       <div className="w-fit">

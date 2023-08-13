@@ -20,17 +20,17 @@ function Range({
   text: string;
 }) {
   return (
-    <div className="flex gap-3">
+    <div className="flex-col sm:flex-row flex gap-3">
       <label
         htmlFor="minmax-range"
         className="mb-2 text-sm font-medium text-gray-900 dark:text-white w-full flex items-center justify-center gap-3"
       >
         <P>{text}</P>{" "}
+      </label>
+      <div className="flex gap-3">
         <TextButton className="h-12 w-12">
           {value + correctionFactor}
         </TextButton>
-      </label>
-      <div className="flex gap-3">
         <IconButton
           title="increase"
           onClick={() => setValue(value + 1)}

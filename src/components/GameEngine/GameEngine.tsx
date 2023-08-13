@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrayUtils } from "../../shared";
+import { ArrayUtils, StringUtils } from "../../shared";
 import Word from "../Word/Word";
 
 function GameEngine({
@@ -13,9 +13,10 @@ function GameEngine({
 }) {
   const rowLength = ArrayUtils.createArray(7 - difficulty * 2);
   const [currentRow, setCurrentRow] = useState(0);
-  const handleChange = (res: boolean) => {
-    if (res) "console.log(res);";
-    else setCurrentRow((p) => p + 1);
+  const handleChange = (res: string) => {
+    const diff = StringUtils.compareStrings(word, res.toLowerCase());
+    console.log(word);
+    console.log(diff);
   };
   return (
     <div className="flex flex-col items-center justify-center gap-3">

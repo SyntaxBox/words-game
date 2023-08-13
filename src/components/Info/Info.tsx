@@ -1,9 +1,6 @@
 import { IconX } from "@tabler/icons-react";
-import Container from "../../ui/layout/Container";
-import H2 from "../../ui/typography/H2";
-import P from "../../ui/typography/P";
-import IconButton from "../../ui/buttons/IconButton";
-import { iconStroke, iconsSize } from "../../shared/constants";
+import { H2, P, Container, IconButton } from "../../ui";
+import { iconStroke, iconsSize } from "../../shared";
 
 function Info({ setShowInfo }: { setShowInfo: (state: boolean) => unknown }) {
   return (

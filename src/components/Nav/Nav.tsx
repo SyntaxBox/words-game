@@ -1,11 +1,10 @@
-import { IconBrandGithub, IconInfoSmall } from "@tabler/icons-react";
-import IconButton from "../../ui/buttons/IconButton";
-import Logo from "../Logo/Logo";
-import DarkModeButton from "../DarkMode/DarkMode";
-import Container from "../../ui/layout/Container";
-import { iconStroke, iconsSize } from "../../shared/constants";
-import Info from "../Info/Info";
 import { useState } from "react";
+import { IconBrandGithub, IconInfoSmall } from "@tabler/icons-react";
+import { IconButton, Container } from "../../ui";
+import { iconStroke, iconsSize } from "../../shared";
+import Logo from "../Logo/Logo";
+import Info from "../Info/Info";
+import DarkModeButton from "../DarkMode/DarkMode";
 
 function Nav() {
   const [showInfo, setShowInfo] = useState(false);

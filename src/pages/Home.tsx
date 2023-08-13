@@ -8,7 +8,7 @@ function Home() {
   const [difficulty, setDifficulty] = useState<number>(0);
   const [wordLength, setWordLength] = useState<number>(3);
   return (
-    <Container className="flex flex-col items-center justify-between gap-12 mt-10">
+    <Container className="flex flex-col items-center justify-between gap-8 sm:gap-12 mt-5 sm:mt-10">
       <H1>
         Welcome To <span className="text-pink-500">Words</span> Game
       </H1>

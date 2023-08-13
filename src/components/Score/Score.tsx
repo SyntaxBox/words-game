@@ -1,4 +1,4 @@
-import P from "../../ui/typography/P";
+import { P } from "../../ui";
 
 function Score({ score }: { score: number }) {
   return (

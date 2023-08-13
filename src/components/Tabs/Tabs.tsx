@@ -12,7 +12,7 @@ function Tabs({
   setCurrentTab: React.Dispatch<React.SetStateAction<number>>;
 }) {
   return (
-    <div className="flex items-center justify-center gap-3">
+    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-center gap-3">
       <P>{text}</P>
       <div className="flex bg-slate-100 hover:bg-slate-200 rounded-lg transition p-1 dark:bg-slate-700 dark:hover:bg-slate-600">
         {tabs.map((tab, i) => {

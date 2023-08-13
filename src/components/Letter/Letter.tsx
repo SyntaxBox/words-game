@@ -10,65 +10,71 @@ function Letter({
 }) {
   const ref = useRef<HTMLInputElement>(null);
   const [value, setValue] = useState("");
-  const [deleteKey, setDeleteKey] = useState(false);
-  if (ref && ref.current) {
-    if (focus) ref.current.focus();
-    else ref.current.blur();
-    if (value) ref.current.blur();
-  }
 
   useEffect(() => {
-    if (ref && ref.current) if (focus) ref.current.focus();
-  }, [ref, focus]);
+    if (focus) {
+      setValue("");
+      ref.current?.focus();
+    } else {
+      ref.current?.blur();
+    }
+  }, [focus]);
+
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (focus && e.key === "Backspace") {
+      // Prevent default Backspace behavior (going back in browser history)
+      e.preventDefault();
+
+      if (value) {
+        // Delete the letter and keep the focus
+        setValue("");
+        onChange("delete");
+      } else if (focus) {
+        // No letter to delete, focus the previous cell
+        onChange("delete");
+      }
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [focus, value]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = e.target.value;
+    if (StringUtils.isAlphabetLetter(inputValue)) {
+      setValue(inputValue.toUpperCase());
+      onChange(inputValue.toUpperCase());
+    } else if (inputValue === "") {
+      setValue("");
+      onChange("");
+    }
+  };
 
   const handleFocus = () => {
     if (ref && ref.current) {
-      if (value) ref.current.blur();
-      else ref.current.focus();
+      if (focus) ref.current.focus();
+      else ref.current.blur();
     }
   };
-
   const handleBlur = () => {
     if (ref && ref.current) {
-      if (value) ref.current.blur();
-      else ref.current.focus();
+      if (focus) ref.current.focus();
+      else ref.current.blur();
     }
   };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.toUpperCase();
-    if (StringUtils.isAlphabetLetter(value)) setValue(value);
-  };
-
-  window.addEventListener(
-    "keydown",
-    (e) => {
-      if (focus) {
-        if (!deleteKey && focus) if (e.key === "Backspace") setDeleteKey(true);
-      }
-    },
-    true
-  );
-  useEffect(() => {
-    if (value) onChange(value);
-  }, [value]);
-
-  useEffect(() => {
-    focus && onChange("delete");
-  }, [deleteKey]);
-
-  useEffect(() => {
-    focus && setValue("");
-  }, [focus]);
 
   return (
     <input
       ref={ref}
-      onFocus={handleFocus}
-      onBlur={handleBlur}
-      className="inter w-[48px] text-center inline-flex justify-center items-center gap-2 rounded-md bg-pink-100 dark:hover:bg-[#ec489a68] dark:bg-[#ec489a3c] border border-transparent text-pink-500 dark:text-pink-400  hover:bg-pink-200 text-xl focus:outline-none focus:ring-2 ring-offset-white focus:ring-pink-500 focus:ring-offset-2 transition-all dark:focus:ring-offset-slate-900 aspect-square"
+      className="font-bold inter w-[48px] text-center inline-flex justify-center items-center gap-2 rounded-md bg-pink-100 dark:hover:bg-[#ec489a68] dark:bg-[#ec489a3c] border border-transparent text-pink-500 dark:text-pink-400  hover:bg-pink-200 text-xl focus:outline-none focus:ring-2 ring-offset-white focus:ring-pink-500 focus:ring-offset-2 transition-all dark:focus:ring-offset-slate-900 aspect-square"
       value={value}
       onChange={handleChange}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
     />
   );
 }

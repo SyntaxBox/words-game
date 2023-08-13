@@ -3,7 +3,7 @@ type props = {
   className?: string;
 } & JSX.IntrinsicElements["div"];
 
-function Container({ children, className, ...rest }: props) {
+export function Container({ children, className, ...rest }: props) {
   return (
     <div className="px-4 sm:px-4 py-2.5 rounded z-1 h-full w-full">
       <div

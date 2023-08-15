@@ -9,7 +9,7 @@ import DarkModeButton from "../DarkMode/DarkMode";
 function Nav() {
   const [showInfo, setShowInfo] = useState(false);
   return (
-    <nav className="w-screen">
+    <nav className="w-screen fixed top-0 left-0 bg-white dark:bg-slate-900">
       <Container className=" flex items-center justify-between">
         <Logo height={64} />
         <div className="flex items-center justify-center gap-3">

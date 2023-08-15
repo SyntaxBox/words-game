@@ -6,10 +6,12 @@ function GameEngine({
   difficulty,
   setScore,
   word,
+  wordsList,
 }: {
   difficulty: 0 | 1 | 2;
   setScore: (score: number) => unknown;
   word: string;
+  wordsList: string[];
 }) {
   const rowLength = ArrayUtils.createArray(7 - difficulty * 2);
   const [currentRow, setCurrentRow] = useState(0);
@@ -23,6 +25,7 @@ function GameEngine({
       {rowLength.map((_, i) => {
         return (
           <Word
+            wordsList={wordsList}
             onChange={handleChange}
             focus={currentRow === i}
             word={word}

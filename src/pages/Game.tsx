@@ -31,12 +31,17 @@ function Game() {
   }, [words]);
   if (!word) return null;
   return (
-    <Container className="flex gap-4">
+    <Container className="flex gap-4 relative">
       <div className="w-fit">
         <Score score={score} />
       </div>
       <div className="flex items-center justify-center">
-        <GameEngine difficulty={difficulty} setScore={setScore} word={word} />
+        <GameEngine
+          difficulty={difficulty}
+          setScore={setScore}
+          word={word}
+          wordsList={words}
+        />
       </div>
     </Container>
   );

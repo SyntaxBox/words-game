@@ -12,11 +12,29 @@
   -o-transition: background ease-in-out 0.3s;
 }
 
+/* For WebKit Browsers (Chrome, Safari) */
+/* You can adjust the colors, width, and other properties as needed */
+::-webkit-scrollbar {
+  width: 6px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #00000000; /* Color of the track (background behind the scrollbar) */
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-pink-500 rounded-full;
+}
+
+::selection {
+  @apply bg-pink-500 text-white;
+}
+
 body {
   font-family: "Inknut Antiqua", serif;
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .dark body {

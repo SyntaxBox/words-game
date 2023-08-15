@@ -31,12 +31,9 @@ export class StringUtils {
       letters: [],
     };
 
-    if (result.correct) return result;
-
     for (let i = 0; i < str1.length; i++) {
       const eq = str1[i] === str2[i];
       const inc = str1.includes(str2[i]);
-      console.log(inc, str2[i]);
       result.letters.push({
         letter: str2[i],
         status: eq ? "correct" : inc ? "unplaced" : "wrong",

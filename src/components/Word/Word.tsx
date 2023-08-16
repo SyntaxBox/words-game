@@ -74,7 +74,10 @@ function Word({
   }, [result]);
 
   return (
-    <div className="flex w-full items-center px-3 justify-center gap-2 sm:gap-3">
+    <div
+      data-testid="word"
+      className="flex w-full items-center px-3 justify-center gap-2 sm:gap-3"
+    >
       {!result ? (
         <>
           {columns.map((_, i) => {

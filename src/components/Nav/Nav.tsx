@@ -13,21 +13,28 @@ function Nav() {
       <Container className=" flex items-center justify-between">
         <Logo height={64} />
         <div className="flex items-center justify-center gap-3">
-          <IconButton
-            title="how to play?"
-            onClick={() => setShowInfo(!showInfo)}
+          <div data-testid="how-to-play">
+            <IconButton
+              title="how to play?"
+              onClick={() => setShowInfo(!showInfo)}
+            >
+              <IconInfoSmall size={iconsSize + 20} stroke={iconStroke - 0.5} />
+            </IconButton>
+          </div>
+          <a
+            href="https://github.com/qhamid/words"
+            target="_blank"
+            data-testid="github-repo"
           >
-            <IconInfoSmall size={iconsSize + 20} stroke={iconStroke - 0.5} />
-          </IconButton>
-          <a href="https://github.com/qhamid/words" target="_blank">
             <IconButton title="Github repo">
               <IconBrandGithub size={iconsSize} stroke={iconStroke} />
             </IconButton>
           </a>
-
-          <IconButton title="toggle dark mode">
-            <DarkModeButton />
-          </IconButton>
+          <div data-testid="toggle-dark-mode">
+            <IconButton title="toggle dark mode">
+              <DarkModeButton />
+            </IconButton>
+          </div>
         </div>
       </Container>
       {showInfo && <Info setShowInfo={setShowInfo} />}

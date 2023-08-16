@@ -32,6 +32,7 @@ function GameEngine({
   };
   return (
     <div
+      data-testid="game-engine"
       className={`flex max-w-[500px] w-screen flex-col items-center justify-center gap-2 sm:gap-3`}
     >
       {rowLength.map((_, i) => {

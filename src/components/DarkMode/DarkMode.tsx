@@ -14,13 +14,15 @@ function DarkModeButton() {
   };
 
   return (
-    <DarkModeSwitch
-      moonColor="#ec4899"
-      sunColor="#ec4899"
-      checked={isDarkMode}
-      onChange={toggleDarkMode}
-      size={iconsSize}
-    />
+    <div data-testid="dark-mode-button">
+      <DarkModeSwitch
+        moonColor="#ec4899"
+        sunColor="#ec4899"
+        checked={isDarkMode}
+        onChange={toggleDarkMode}
+        size={iconsSize}
+      />
+    </div>
   );
 }
 

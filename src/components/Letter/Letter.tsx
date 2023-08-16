@@ -72,6 +72,7 @@ function Letter({
       ref={ref}
       className="font-bold inter w-full max-w-[48px] text-center inline-flex justify-center items-center gap-2 rounded-md bg-pink-100 dark:hover:bg-[#ec489a68] dark:bg-[#ec489a3c] border border-transparent text-pink-500 dark:text-pink-400  hover:bg-pink-200 text-base sm:text-xl focus:outline-none focus:ring-1 sm:focus:ring-2 ring-offset-white focus:ring-pink-500 focus:ring-offset-2 sm:focus:ring-offset-2 transition-all dark:focus:ring-offset-slate-900 aspect-square"
       value={value}
+      role="textbox"
       onChange={handleChange}
       onFocus={handleFocus}
       onBlur={handleBlur}

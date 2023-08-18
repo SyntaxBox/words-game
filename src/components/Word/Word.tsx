@@ -41,6 +41,8 @@ function Word({
       if (composedWord.length === word.length)
         setComposedWord((w) => w.slice(0, -2));
       else if (composedWord.length) setComposedWord((w) => w.slice(0, -1));
+    } else if (l === "delete-value") {
+      composedWord.length && setComposedWord((w) => w.slice(0, -1));
     } else {
       currentCol < word.length - 1 && setCurrentCol((p) => p + 1);
       setComposedWord((w) => w + l);

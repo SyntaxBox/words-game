@@ -21,14 +21,14 @@ function Letter({
   }, [focus]);
 
   const handleKeyDown = (e: KeyboardEvent) => {
-    if (focus && e.key === "Backspace") {
+    if (focus && (e.key === "Backspace" || e.key === "Delete")) {
       // Prevent default Backspace behavior (going back in browser history)
       e.preventDefault();
 
       if (value) {
         // Delete the letter and keep the focus
         setValue("");
-        onChange("delete");
+        onChange("delete-value");
       } else if (focus) {
         // No letter to delete, focus the previous cell
         onChange("delete");

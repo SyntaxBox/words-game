@@ -26,7 +26,6 @@ function Letter({
       if ("preventDefault" in e) {
         e.preventDefault();
       }
-      console.log(e.key);
 
       if (value) {
         // Delete the letter and keep the focus

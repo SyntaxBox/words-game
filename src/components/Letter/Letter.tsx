@@ -20,10 +20,12 @@ function Letter({
     }
   }, [focus]);
 
-  const handleKeyDown = (e: KeyboardEvent) => {
+  const handleKeyDown = (e: KeyboardEvent | { key: string }) => {
     if (focus && (e.key === "Backspace" || e.key === "Delete")) {
       // Prevent default Backspace behavior (going back in browser history)
-      e.preventDefault();
+      if ("preventDefault" in e) {
+        e.preventDefault();
+      }
 
       if (value) {
         // Delete the letter and keep the focus
@@ -49,6 +51,7 @@ function Letter({
       setValue(inputValue.toUpperCase());
       onChange(inputValue.toUpperCase());
     } else if (inputValue === "") {
+      handleKeyDown({ key: "Backspace" });
       setValue("");
       onChange("");
     }
@@ -73,6 +76,7 @@ function Letter({
       className="font-bold inter w-full max-w-[48px] text-center inline-flex justify-center items-center gap-2 rounded-md bg-pink-100 dark:hover:bg-[#ec489a68] dark:bg-[#ec489a3c] border border-transparent text-pink-500 dark:text-pink-400  hover:bg-pink-200 text-base sm:text-xl focus:outline-none focus:ring-1 sm:focus:ring-2 ring-offset-white focus:ring-pink-500 focus:ring-offset-2 sm:focus:ring-offset-2 transition-all dark:focus:ring-offset-slate-900 aspect-square"
       value={value}
       role="textbox"
+      autoCapitalize="none"
       type="text"
       onChange={handleChange}
       onFocus={handleFocus}

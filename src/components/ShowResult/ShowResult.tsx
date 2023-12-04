@@ -17,7 +17,7 @@ function ShowResult({
   const eachLetterDuration = duration / result.letters.length;
   const delay = eachLetterDuration + 20;
   return (
-    <div className="w-full flex gap-2 sm:gap-3 items-center justify-center max-w-[500px]">
+    <div className="w-full flex gap-2 sm:gap-3 items-center justify-center max-w-[500px] -z-[1]">
       {letters.map(({ letter, status }, i) => {
         const d = delay * i;
         return (

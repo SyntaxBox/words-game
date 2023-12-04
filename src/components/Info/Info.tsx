@@ -5,7 +5,7 @@ import ShowResult from "../ShowResult/ShowResult";
 
 function Info({ setShowInfo }: { setShowInfo: (state: boolean) => unknown }) {
   return (
-    <div className="absolute overflow-y-scroll w-screen h-screen top-0 left-0 bg-white dark:bg-slate-900 py-10">
+    <div className="absolute overflow-y-scroll w-screen h-screen top-0 left-0 bg-white dark:bg-slate-900 py-10 z-[1000]">
       <Container className="relative flex flex-col gap-6">
         <div className="sm:absolute top-0 right-0">
           <IconButton onClick={() => setShowInfo(false)} title="hide">
@@ -13,7 +13,7 @@ function Info({ setShowInfo }: { setShowInfo: (state: boolean) => unknown }) {
           </IconButton>
         </div>
         <H2>How to play</H2>
-        <ul className="list-disc ml-4 text-white">
+        <ul className="list-disc ml-4 dark:text-white">
           <li>
             <P>You have a number of tries</P>
           </li>
@@ -67,7 +67,7 @@ function Info({ setShowInfo }: { setShowInfo: (state: boolean) => unknown }) {
           <li className="text-pink-500">
             <P>
               Pink:{" "}
-              <span className="text-black dark:text-white">
+              <span className="text-black dark:text-white pb-3">
                 means it is the correct word
               </span>
             </P>

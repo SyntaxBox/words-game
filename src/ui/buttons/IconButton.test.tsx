@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import IconButton from "./IconButton";
+import { IconButton } from "./IconButton";
 
 test("renders IconButton with correct styling and title", () => {
   const title = "Click me";

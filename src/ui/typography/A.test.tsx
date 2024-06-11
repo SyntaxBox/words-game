@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import A from "./A";
+import { A } from "./A";
 
 describe("A Component", () => {
   it("should render the children correctly", () => {

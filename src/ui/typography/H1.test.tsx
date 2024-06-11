@@ -1,6 +1,5 @@
-import React from "react";
 import { render } from "@testing-library/react";
-import H1 from "./H1";
+import { H1 } from "./H1";
 
 describe("H1 Component", () => {
   it("should render the children correctly", () => {

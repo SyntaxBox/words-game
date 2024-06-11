@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import Nav from "../components/Nav/Nav";
-import H1 from "../ui/typography/H1";
-import TextButton from "../ui/buttons/textButton";
-import Container from "../ui/layout/Container";
+import { H1, TextButton, Container } from "../ui/";
 
 function Layout() {
   return (

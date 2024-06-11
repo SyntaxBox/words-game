@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import TextButton from "./textButton";
+import { TextButton } from "./textButton";
 test("renders TextButton with correct styling and text content", () => {
   const buttonText = "Click me";
   const { getByText } = render(<TextButton>{buttonText}</TextButton>);

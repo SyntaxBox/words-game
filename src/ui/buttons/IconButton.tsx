@@ -1,9 +1,8 @@
-type props = {
-  children: React.ReactNode;
-  title: string;
-} & JSX.IntrinsicElements["button"];
-
-export function IconButton({ children, title, ...rest }: props) {
+export function IconButton({
+  children,
+  title,
+  ...rest
+}: JSX.IntrinsicElements["button"]) {
   return (
     <button
       title={title}

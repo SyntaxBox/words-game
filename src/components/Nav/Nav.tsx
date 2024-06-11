@@ -22,7 +22,7 @@ function Nav() {
             </IconButton>
           </div>
           <a
-            href="https://github.com/qhamid/words"
+            href="https://github.com/cargopip/words"
             target="_blank"
             data-testid="github-repo"
           >

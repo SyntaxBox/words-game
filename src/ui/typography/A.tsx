@@ -8,5 +8,3 @@ export function A({ children, ...rest }: JSX.IntrinsicElements["button"]) {
     </button>
   );
 }
-
-export default A;

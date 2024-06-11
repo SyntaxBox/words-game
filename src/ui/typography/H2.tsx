@@ -5,5 +5,3 @@ export function H2({ children }: { children: React.ReactNode }) {
     </h2>
   );
 }
-
-export default H2;

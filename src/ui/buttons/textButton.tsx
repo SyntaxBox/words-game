@@ -12,5 +12,3 @@ export function TextButton({
     </button>
   );
 }
-
-export default TextButton;

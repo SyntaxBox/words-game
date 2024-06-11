@@ -11,5 +11,3 @@ export function IconButton({
     </button>
   );
 }
-
-export default IconButton;

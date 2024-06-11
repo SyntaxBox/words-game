@@ -6,7 +6,7 @@ type props = {
   title: string;
   children: ReactNode;
   className?: string;
-} & JSX.IntrinsicElements["div"];
+};
 
 function Alert({ title, children, className }: props) {
   return (

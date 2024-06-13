@@ -7,7 +7,7 @@ This is a game where you can play with words.
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/words-game.git
+   git clone https://github.com/cargopip/words.git
    ```
 
 2. Install dependencies:
